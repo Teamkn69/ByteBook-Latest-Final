@@ -1,0 +1,220 @@
+import { Box, Flex, Grid, Skeleton, Text, VStack } from "@chakra-ui/react";
+import ProfilePost from "./ProfilePost";
+import useGetUserPosts from "../../hooks/useGetUserPosts";
+
+const ProfilePosts = () => {
+	const { isLoading, posts } = useGetUserPosts();
+
+	const noPostsFound = !isLoading && posts.length === 0;
+	if (noPostsFound) return <NoPostsFound />;
+
+	return (
+		<Grid
+			templateColumns={{
+				sm: "repeat(1, 1fr)",
+				md: "repeat(3, 1fr)",
+			}}
+			gap={1}
+			columnGap={1}
+		>
+			{isLoading &&
+				[0, 1, 2].map((_, idx) => (
+					<VStack key={idx} alignItems={"flex-start"} gap={4}>
+						<Skeleton w={"full"}>
+							<Box h='300px'>contents wrapped</Box>
+						</Skeleton>
+					</VStack>
+				))}
+
+			{!isLoading && (
+				<>
+					{posts.map((post) => (
+						<ProfilePost post={post} key={post.id} />
+					))}
+				</>
+			)}
+		</Grid>
+	);
+};
+
+export default ProfilePosts;
+
+const NoPostsFound = () => {
+	return (
+		<Flex flexDir='column' textAlign={"center"} mx={"auto"} mt={10}>
+			<Text fontSize={"2xl"}>No Posts Found🤔</Text>
+		</Flex>
+	);
+};
+
+
+//latest working code
+// import { Box, Flex, Grid, Skeleton, Text, VStack } from "@chakra-ui/react";
+// import ProfilePost from "./ProfilePost";
+// import useGetUserPosts from "../../hooks/useGetUserPosts.js";
+// const ProfilePosts = () => {
+// 	const { isLoading, posts } = useGetUserPosts();
+//     console.log("Posts from profile",posts);
+// 	const noPostsFound = !isLoading && posts.length === 0;
+// 	if (noPostsFound) return <NoPostsFound />;
+
+// 	return (
+// 		<Grid
+// 			templateColumns={{
+// 				sm: "repeat(1, 1fr)",
+// 				md: "repeat(3, 1fr)",
+// 			}}
+// 			gap={1}
+// 			columnGap={1}
+// 		>
+// 			{isLoading &&
+// 				[0, 1, 2, 3].map((_, idx) => (
+// 					<VStack key={idx} alignItems={"flex-start"} gap={4}>
+// 						<Skeleton w={"full"}>
+// 							<Box h='300px'>contents wrapped</Box>
+// 						</Skeleton>
+// 					</VStack>
+// 				))}
+
+// 			{!isLoading && (
+// 				<>
+// 					{posts.map((post) => (
+// 						<ProfilePost post={post} key={post.id} />
+// 					))}
+// 				</>
+// 			)}
+// 		</Grid>
+// 	);
+// };
+
+// export default ProfilePosts;
+
+// const NoPostsFound = () => {
+//   return (
+//     <Flex flexDir="column" textAlign={"center"} mx={"auto"} mt={10}>
+//       <Text fontSize={"2xl"}>No Posts Found🤔</Text>
+//     </Flex>
+//   );
+// };
+
+//kukreti code
+// const ProfilePosts = () => {
+
+
+
+
+//   return (
+//     <Grid
+//       templateColumns={{
+//         sm: "repeat(1, 1fr)",
+//         md: "repeat(3, 1fr)",
+//       }}
+//       gap={1}
+//       columnGap={1}
+//     >
+//       {loading ? (
+//         <>
+//           <VStack alignItems={"flex-start"} gap={4}>
+//             <Skeleton w={"full"}>
+//               <Box h="300px">contents wrapped</Box>
+//             </Skeleton>
+//           </VStack>
+//           <VStack alignItems={"flex-start"} gap={4}>
+//             <Skeleton w={"full"}>
+//               <Box h="300px">contents wrapped</Box>
+//             </Skeleton>
+//           </VStack>
+//           <VStack alignItems={"flex-start"} gap={4}>
+//             <Skeleton w={"full"}>
+//               <Box h="300px">contents wrapped</Box>
+//             </Skeleton>
+//           </VStack>
+//           <VStack alignItems={"flex-start"} gap={4}>
+//             <Skeleton w={"full"}>
+//               <Box h="300px">contents wrapped</Box>
+//             </Skeleton>
+//           </VStack>
+//           <VStack alignItems={"flex-start"} gap={4}>
+//             <Skeleton w={"full"}>
+//               <Box h="300px">contents wrapped</Box>
+//             </Skeleton>
+//           </VStack>
+//           <VStack alignItems={"flex-start"} gap={4}>
+//             <Skeleton w={"full"}>
+//               <Box h="300px">contents wrapped</Box>
+//             </Skeleton>
+//           </VStack>
+//           <VStack alignItems={"flex-start"} gap={4}>
+//             <Skeleton w={"full"}>
+//               <Box h="300px">contents wrapped</Box>
+//             </Skeleton>
+//           </VStack>
+//           <VStack alignItems={"flex-start"} gap={4}>
+//             <Skeleton w={"full"}>
+//               <Box h="300px">contents wrapped</Box>
+//             </Skeleton>
+//           </VStack>
+//           <VStack alignItems={"flex-start"} gap={4}>
+//             <Skeleton w={"full"}>
+//               <Box h="300px">contents wrapped</Box>
+//             </Skeleton>
+//           </VStack>
+//           <VStack alignItems={"flex-start"} gap={4}>
+//             <Skeleton w={"full"}>
+//               <Box h="300px">contents wrapped</Box>
+//             </Skeleton>
+//           </VStack>
+//           <VStack alignItems={"flex-start"} gap={4}>
+//             <Skeleton w={"full"}>
+//               <Box h="300px">contents wrapped</Box>
+//             </Skeleton>
+//           </VStack>
+//           <VStack alignItems={"flex-start"} gap={4}>
+//             <Skeleton w={"full"}>
+//               <Box h="300px">contents wrapped</Box>
+//             </Skeleton>
+//           </VStack>
+//           <VStack alignItems={"flex-start"} gap={4}>
+//             <Skeleton w={"full"}>
+//               <Box h="300px">contents wrapped</Box>
+//             </Skeleton>
+//           </VStack>
+//           <VStack alignItems={"flex-start"} gap={4}>
+//             <Skeleton w={"full"}>
+//               <Box h="300px">contents wrapped</Box>
+//             </Skeleton>
+//           </VStack>
+//           <VStack alignItems={"flex-start"} gap={4}>
+//             <Skeleton w={"full"}>
+//               <Box h="300px">contents wrapped</Box>
+//             </Skeleton>
+//           </VStack>
+//           <VStack alignItems={"flex-start"} gap={4}>
+//             <Skeleton w={"full"}>
+//               <Box h="300px">contents wrapped</Box>
+//             </Skeleton>
+//           </VStack>
+//         </>
+//       ) : (
+//         <>
+//           <ProfilePost image={"/img1.jpg"} />
+//           <ProfilePost image={"/img2.jpg"} />
+//           <ProfilePost image={"/img3.jpg"} />
+//           <ProfilePost image={"/img4.jpg"} />
+//           <ProfilePost image={"/img1.jpg"} />
+//           <ProfilePost image={"/img2.jpg"} />
+//           <ProfilePost image={"/img3.jpg"} />
+//           <ProfilePost image={"/img4.jpg"} />
+//           <ProfilePost image={"/img1.jpg"} />
+//           <ProfilePost image={"/img2.jpg"} />
+//           <ProfilePost image={"/img3.jpg"} />
+//           <ProfilePost image={"/img4.jpg"} />
+//           <ProfilePost image={"/img1.jpg"} />
+//           <ProfilePost image={"/img2.jpg"} />
+//           <ProfilePost image={"/img3.jpg"} />
+//           <ProfilePost image={"/img4.jpg"} />
+//         </>
+//       )}
+//     </Grid>
+//   );
+// };
